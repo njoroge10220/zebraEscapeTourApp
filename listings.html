@@ -1,0 +1,265 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} listings {% endblock %}
+
+{% block content %}
+<!--navbar-section-->
+<section id="navbar-section" class="navbar-section w-full"> 
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <div class="flex d-flex">
+                <a href="/" class="flex items-center space-x-3 fw-bold text-3xl rtl:space-x-reverse">
+                    {% for Website_Image in Website_Images %}
+                     <img src="{{ Website_Image.Name.url }}" class="" style="height: 50px;" alt="icon image">
+                    {% endfor %}
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="bi-list"></span>
+                </button>
+                <div class="collapse navbar-collapse px-5" id="navbarNavAltMarkup">
+                    <ul class="navbar-nav mr-auto font-medium  p-2 md:p-0 mt-1 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                        <li>
+                            <a href="/" class="block fw-bold text-l px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Home</a>
+                        </li>
+                        <li>
+                            <a href="#hotels-section" class="block fw-bold text-l px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Hotels</a>
+                        </li>
+                        <li>
+                            <a href="#restaurants-section" class="block fw-bold text-l px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Restaurants</a>
+                        </li>
+                        <li>
+                            <a href="#destinations-section" class="block fw-bold text-l px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Destinations</a>
+                        </li>
+                        <li>
+                            <a href="#travels-section" class="block fw-bold text-l px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Travels</a>
+                        </li>
+                        <li>
+                            <a href="#footer" class="block fw-bold text-l px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Latest</a>
+                        </li>
+                    </ul>
+                    <div class=" px-4 col-md-12 col-12">
+                        <a href="{% url 'register' %}" class="btn btn-outline-success rounded-pill fw-bold border-green-900 ">become a regular</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</section>
+
+<!--hotels-section-->
+<section class="hotels-section" id="hotels-section">
+    <div class="container">
+       <div class="row justify-content-center">
+        <div class="hotels-header fs-3 fw-bold text-center">
+            <h2>Hotels</h2>
+        </div>
+       </div>
+    </div>
+</section>
+
+<!--restaurants-section-->
+<section class="restaurants-section" id="restaurants-section">
+    <div class="container">
+        <div class="row justify-content-center">
+         <div class="Restaurants-header fs-3 fw-bold text-center">
+             <h2>Restaurants</h2>
+         </div>
+        </div>
+     </div>
+</section>
+
+<!--destinations-section-->
+<section class="destinations-section" id="destinations-section">
+    <div class="container">
+        <div class="row justify-content-center">
+         <div class="Destinations-header fs-3 fw-bold text-center">
+             <h2>Destinations</h2>
+         </div>
+        </div>
+     </div>
+</section>
+
+<!--travels-section-->
+<section class="travels-section" id="travels-section">
+    <div class="container">
+        <div class="row justify-content-center">
+         <div class="Travels-header fs-3 fw-bold text-center">
+             <h2>Travels</h2>
+         </div>
+        </div>
+     </div>
+</section>
+
+<!--styles-->
+<style>
+    body{
+        overflow:visible; 
+        max-width: 1920px;
+        width: 100%;  
+        margin: 0 auto;         
+    }
+    @media screen and (max-width:1920px){
+       body{
+        overflow-x: hidden !important;
+        max-width: 100%;
+
+       }
+    }  
+    .sticky-navbar{
+        position: fixed;
+        top: 0;      
+    }
+    .slide-img{ height: 50pc;}
+    .slide-div{height: 50pc;}
+    .slide-div-con{ 
+        margin-top: -40pc;   
+        font-size: 20px;
+        font-weight: 800; 
+        text-decoration: none;
+        color: whitesmoke;          
+    }
+    .slide-div-con h3{
+        font-size: 40px;
+    }
+    .slide-div-con a{
+        text-align: center;
+        padding: 2px 8px;
+    }
+    .search-area{
+        z-index: 3;
+        margin: 0 auto;
+        align-items: center;
+    }
+    .single-topic{
+        border-radius: 2pc;
+        background-color: lightgray;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        font-size: 50px;
+        box-shadow:  0 5px 10px brown;
+        text-decoration: none;
+        margin-top: -5pc;
+    }
+    .single-topic:hover{
+        background-color: lightgreen;
+        box-shadow: 0 5px 10px lightgrey;
+    }
+    .single-topic h2 a{
+        text-decoration: none;
+        color: black;
+        font-size: 30px;
+        font-weight: 700;
+        padding:  0pc 3pc;
+    }
+    .single-topic p{
+        padding: 1pc 3pc;
+        font-size: 20px;    
+    }
+    .explore-header{
+        margin-top: 3pc;
+        text-align: center;
+        font-size: 20px;
+        font-weight: 400;
+        padding-top: 10px;                
+    }
+    .explore-header h2{
+        color: lightgreen;
+        font-size: 30px;
+        font-weight: 900;
+    }
+    .explore-header h3{
+        font-weight: 900;
+        font-size: 30px;
+    }
+    .recommended-header{
+        text-align: center;
+        font-size: 20px;
+        font-weight: 400;        
+    }
+    .recommended-header h3{
+        font-size: 30px;
+        font-weight: 900;
+    }
+    .recommended-header h2{
+        font-size: 30px;
+        font-weight: 900;
+        color: lightgreen;
+    }
+    .packages-header{
+        text-align: center;
+        font-size: 20px;
+        font-weight: 400; 
+        padding-top: 0.5pc;
+    }
+    .packages-header h3{
+        font-size: 30px;
+        font-weight: 900;
+    }
+    .packages-header h2{
+        font-size: 30px;
+        font-weight: 900;
+        color: lightgreen;
+    }
+    .offers-header{
+        margin-top: 2pc;
+        text-align: center;
+        font-size: 20px;
+        font-weight: 400; 
+        padding-top: 5px;
+    }
+    .offers-header h3{
+        font-size: 30px;
+        font-weight: 900;
+    }
+    .offers-header h2{
+        font-size: 30px;
+        font-weight: 900;
+        color: lightgreen;
+    }   
+    .link-btn{
+        text-decoration: none;
+        background-color: brown;
+        color: white;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 20px;           
+        padding: 2px 8px;
+        margin-bottom: 1pc;
+    }
+    .link-btn:hover{
+        background-color: lightgreen;
+    }
+    .footer-header{
+        color: lightgray; 
+        font-size:20px; 
+        font-weight:600;
+    }
+    .footer-email{
+        color:lightgray;
+    }
+    .footer-email a{
+        text-decoration: none;
+        font-size: 20px;
+    }
+</style>
+<!--js script-->
+<script>
+    window.onscroll= function() {stickynavbar()};
+
+    var navbar = document.getElementById("navbar-section");
+    var sticky = navbar.offsetTop;
+
+    function stickynavbar(){
+        if(window.pageYOffset >= sticky){
+            navbar.classList.add("sticky-navbar");
+        }else{
+            navbar.classList.remove("sticky-navbar");
+        }
+    }    
+</script>
+{% endblock %}
