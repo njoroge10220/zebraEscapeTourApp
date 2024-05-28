@@ -1,0 +1,144 @@
+{% extends 'placesBase.html' %}
+
+{% load static %}
+
+{% block title %} diani {% endblock %}
+
+{% block content2 %}
+   <div class="container">
+      <div class="header">
+         <h1>Diani <span>- South Coast</span></h1>
+      </div>
+   </div>
+{% endblock %}
+
+{% block content3 %}
+
+<br>
+<!--Gallery-->
+<section class="gallery-section">
+   <div class="container h-75">
+      <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+         <div class="carousel-inner container-fill">
+             <div class="row h-75">
+                 <div class="h-75">
+                  {% for Picture in Pictures %}                                              
+                     <div class="carousel-item w-75 {% if forloop.counter == 1 %} active {% endif %}" style="height: 500px;" id="slide {{ forloop.counter}}">
+                        <img src="{{ Picture.images.url }}" class="d-block rounded-3xl img-thumbnail w-75 h-100 slide-img" alt="explore {{Place.name}} image">
+                     </div>                         
+                  {% endfor %}
+                 </div>
+             </div>
+         </div>
+      </div>
+   </div>
+</section>     
+
+<!--overview-section-->
+<section class="overview-section" id="overview-section">
+   <div class="container">
+      <div class="row justify-content-center">
+         <div class="overview-header fs-3 fw-bold text-center">
+            <h2>overview</h2>
+         </div>
+      </div>
+      <div class="">
+         <h1>Diani!</h1>
+         <p>
+            Renowed for itspristine white sands and clear turquoise waters: <br>
+
+            1.Natural Beauty: <br>
+            Diani Beach boasts a 25km strech of beach that is perfect for sunbathing, swimming and enjoying  various water sports.
+            The calm and warm weather adds to the beach's allure, making it ideal for a relaxing getaway. <br>
+
+            2.Activities: <br>
+               a. Cliff jumping into Thee African Pool. <br>
+               b. Deep-sea diving. <br>
+               c. Kite and wind surfing. <br>
+               d. sea feeding and fishing. <br>
+               e. Visit to Shimba Hills National Reserve and Kisite Mpunguti Marine Park. <br>             
+
+            3.Art and Heritage: <br>
+            The Diani Art Gallery showcases works from Africa’s greatest artists
+            and the local heritage includes a thriving industry of artistic items 
+            and furniture influenced by the cultural interaction between locals and Arabs. <br>
+
+            4.Nightlife: <br>
+            As the sun sets, Diani transforms into a lively party scene with various nightclubs and music venues.
+            The energy is infectious, and the nightlife here is known for creating lasting memories. <br>
+
+            5.Culture: <br>
+            Diani’s vibrant culture is a blend of various communities, with the indigenous Digo people known for their warm hospitality.
+            The area’s history dates back to the 8th Century AD, with influences from Arab and Indian traders shaping the unique Swahili culture that thrives today. <br>
+         </p>
+      </div>  
+   </div>
+</section>
+
+<!--packages-section-->
+<section class="packages-section" id="packages-section">
+   <div class="container">
+      <div class="row justify-content-center">
+         <div class="packages-header fs-3 fw-bold text-center">
+            <h2>packages</h2>
+         </div>
+      </div>
+   </div>
+</section>
+
+<!--pricing-section-->
+<section class="pricing-section" id="pricing-section">
+   <div class="container">
+      <div class="row justify-content-center">
+         <div class="pricing-header fs-3 fw-bold text-center">
+            <h2>pricing</h2>
+         </div>
+      </div>
+   </div>
+</section>
+
+<!--feedback-section-->
+<section class="feedback-section" id="feedback-section">
+   <div class="container">
+      <div class="row justify-content-center">
+         <div class="feedback-header fs-3 fw-bold text-center">
+            <h2>feedback</h2>
+         </div>
+      </div>
+   </div>
+</section>
+
+<!--sytle-->
+<style>
+   .header h1{
+      text-align: center;
+      font-size: 40px;
+      font-weight: 700;
+   }
+   .header h1 span{
+      color: lightgreen;
+   }
+   .sticky-navbar{
+      position: fixed;
+      top: 0;
+      left: 0;
+   }
+</style>
+
+<!--script-->
+<script>
+   window.onscroll= function() {stickynavbar()};
+
+   var navbar = document.getElementById("navbar-section");
+   var sticky = navbar.offsetTop;
+
+   function stickynavbar(){
+         if(window.pageYOffset >= sticky){
+            navbar.classList.add("sticky-navbar");
+         }else{
+            navbar.classList.remove("sticky-navbar");
+         }
+   }
+
+</script>
+{% endblock %}

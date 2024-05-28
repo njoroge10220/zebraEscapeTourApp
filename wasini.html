@@ -1,0 +1,121 @@
+{% extends 'placesBase.html' %}
+
+{% load static %}
+
+{% block title %} wasini {% endblock %}
+
+{% block content2 %}
+   <div class="container">
+      <div class="header">
+         <h1>Wasini Island <span>- South Coast</span></h1>
+      </div>
+   </div>
+{% endblock %}
+
+{% block content3 %}
+
+<br>
+<!--Gallery-->
+<section class="gallery-section">
+   <div class="container h-75">
+      <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+         <div class="carousel-inner container-fill">
+             <div class="row h-75">
+                 <div class="h-75">
+                     {% for Picture in Pictures %}                                              
+                        <div class="carousel-item w-75 {% if forloop.counter == 1 %} active {% endif %}" style="height: 500px;" id="slide {{ forloop.counter}}">
+                           <img src="{{ Picture.images.url }}" class="d-block rounded-3xl img-thumbnail w-75 h-100 slide-img" alt="explore {{Place.name}} image">
+                        </div>                         
+                     {% endfor %}
+                 </div>
+             </div>
+         </div>
+      </div>
+   </div>
+</section>     
+
+<!--overview-section-->
+<section class="overview-section" id="overview-section">
+   <div class="container">
+      <div class="row justify-content-center">
+         <div class="overview-header fs-3 fw-bold text-center">
+            <h2>overview</h2>
+         </div>
+      </div>
+      <div class="">
+         <h1>Wasini!</h1>
+         <p>
+            Thinking of Dolphins, Think Wasini! <br>
+            1.
+         </p>
+      </div>
+   </div>
+</section>
+
+<!--packages-section-->
+<section class="packages-section" id="packages-section">
+   <div class="container">
+      <div class="row justify-content-center">
+         <div class="packages-header fs-3 fw-bold text-center">
+            <h2>packages</h2>
+         </div>
+      </div>
+   </div>
+</section>
+
+<!--pricing-section-->
+<section class="pricing-section" id="pricing-section">
+   <div class="container">
+      <div class="row justify-content-center">
+         <div class="pricing-header fs-3 fw-bold text-center">
+            <h2>pricing</h2>
+         </div>
+      </div>
+   </div>
+</section>
+
+<!--feedback-section-->
+<section class="feedback-section" id="feedback-section">
+   <div class="container">
+      <div class="row justify-content-center">
+         <div class="feedback-header fs-3 fw-bold text-center">
+            <h2>feedback</h2>
+         </div>
+      </div>
+   </div>
+</section>
+
+<!--sytle-->
+<style>
+   .header h1{
+      text-align: center;
+      font-size: 40px;
+      font-weight: 700;
+   }
+   .header h1 span{
+      color: lightgreen;
+   }
+   .sticky-navbar{
+      position: fixed;
+      top: 0;
+      left: 0;
+   }
+</style>
+
+<!--script-->
+<script>
+   window.onscroll= function() {stickynavbar()};
+
+   var navbar = document.getElementById("navbar-section");
+   var sticky = navbar.offsetTop;
+
+   function stickynavbar(){
+         if(window.pageYOffset >= sticky){
+            navbar.classList.add("sticky-navbar");
+         }else{
+            navbar.classList.remove("sticky-navbar");
+         }
+   }
+
+</script>
+{% endblock %}
