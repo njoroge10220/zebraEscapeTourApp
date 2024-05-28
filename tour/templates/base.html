@@ -1,0 +1,343 @@
+    {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title> | {% block title %}{% endblock %}</title>
+
+     <!--bootstrap.css-->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-grid.css'%}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!--tailwind css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+
+     <!--bootstrap.icons.css-->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <section class="">
+            <div class="flex items-center justify-center mx-auto p-1 bg-red-900 w-100">
+                <button data-bs-toggle="collapse" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+                    <span class="bi-list"></span>
+                </button>
+                <div class="hidden md:block md:w-auto" id="navbar-default">
+                    <ul class="font-medium flex flex-col p-1 md:p-0 mt-1 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                        {% for Contact in Contacts %}
+                        <li>
+                            <a href="#" class="block fw-bold text-l px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">ZebraEscape Tours, Tier one Travel & Tour Company</a>
+                        </li>                       
+                        <li>
+                            <a href="#" class="block fw-bold text-l px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Phone: +{{ Contact.phone_number }}</a>
+                        </li>
+                        <li class="flex d-flex">
+                            <a href="#" class="block fw-bold text-l px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"><i class="bi-whatsapp"></i></a>
+                            <a href="{{ Contact.instagram }}" class="block fw-bold text-l px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"><i class="bi-instagram"></i></a>
+                            <a href="{{ Contact.facebook }}" class="block fw-bold text-l px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"><i class="bi-facebook"></i></a>
+                        </li>
+                        <li>
+                            <a href="mailto:{{ Contact.email }}" class="block fw-bold text-l px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </section>     
+    </div>
+    <!--styles-->
+    <style>
+    
+        body{
+            overflow:visible; 
+            max-width: 1920px;
+            width: 100%;  
+            margin: 0 auto;         
+        }
+        @media screen and (max-width:1920px){
+        body{
+            overflow-x: hidden !important;
+            max-width: 100%;
+
+        }
+        }
+        .carousel{z-index: -2;}
+        .sticky-navbar{
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+        .slide-img{ height: 50pc;}
+        .slide-div{height: 50pc;}
+        .slide-div-con{ 
+            z-index: 5;
+            margin-top: -40pc; 
+            padding-left: 5pc; 
+            font-size: 20px;
+            font-weight: 800; 
+            text-decoration: none;
+            color: whitesmoke;          
+        }
+        .slide-div-con h3{
+            font-size: 40px;
+        }
+        .slide-div-con a{
+            text-decoration: none;
+            background-color: brown;
+            color: whitesmoke;
+            text-align: center;
+            padding: 2px 8px;
+        }
+        .search-area{
+            z-index: 3;
+            margin: 0 auto;
+            align-items: center;
+        }
+        .topics ul {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            list-style: none; 
+            margin-top: -3pc;            
+        }
+        .single-topic{
+            border-radius: 2pc;
+            background-color: lightgray;
+            padding-left: 1pc;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            box-shadow:  0 5px 10px brown;
+            text-decoration: none;
+        }
+        .single-topic:hover{
+            background-color: lightgreen;
+            box-shadow: 0 5px 10px lightgrey;
+        }
+        .single-topic h2 a{
+            text-decoration: none;
+            color: black;
+            font-size: 30px;
+            font-weight: 700;
+            padding:  0pc 3pc;
+        }
+        .single-topic p{
+            padding: 1pc 3pc;
+            font-size: 20px;    
+        }
+        .explore-header{
+            margin-top: 5pc;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 400;
+            padding-top: 20px;                
+        }
+        .explore-header h2{
+            color: lightgreen;
+            font-size: 30px;
+            font-weight: 900;
+        }
+        .explore-header h3{
+            font-weight: 900;
+            font-size: 30px;
+        }
+        .explore-con{
+            border-radius: 1pc;
+            position: relative;
+            justify-content: center;
+            align-items: center;                
+            height: 200px;
+            width: 300px;
+        }
+        .explore-con img{
+            border-radius: 1pc;
+            height: 200px;
+            width: 300px;
+        }
+        .recommended-header{
+            margin-top: 5pc;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 400; 
+            padding-top: 20px;
+        }
+        .recommended-header h3{
+            font-size: 30px;
+            font-weight: 900;
+        }
+        .recommended-header h2{
+            font-size: 30px;
+            font-weight: 900;
+            color: lightgreen;
+        }
+        .recommended-con{
+            width: 300px;
+            background-color:lightgray;
+            border-radius:0.5pc;
+            justify-content:center;
+            margin-bottom: 2pc;
+        }
+        .recommended-con img{
+            width: 300px;
+            height:200px; 
+            border-radius:0.5pc;
+        }
+        .packages-header{
+            text-align: center;
+            font-size: 20px;
+            font-weight: 400; 
+            padding-top: 1pc;
+        }
+        .packages-header h3{
+            font-size: 30px;
+            font-weight: 900;
+        }
+        .packages-header h2{
+            font-size: 30px;
+            font-weight: 900;
+            color: lightgreen;
+        }
+        .packages-con{
+            width: 400px;
+            margin-top:1pc;
+        }
+        .packages-con img{
+            width: 250px; 
+            height:200px; 
+            border-radius: 0.5pc;
+        }
+        .offers-header{
+            margin-top: 2pc;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 400; 
+            padding-top: 5px;
+        }
+        .offers-header h3{
+            font-size: 30px;
+            font-weight: 900;
+        }
+        .offers-header h2{
+            font-size: 30px;
+            font-weight: 900;
+            color: lightgreen;
+        }
+        .offers-con{
+            width: 300px;
+            background-color: whitesmoke;
+            box-shadow: 0 5px 10px lightgrey;
+            border-radius:0.5pc;
+            justify-content:center;
+            margin-bottom: 2pc;
+        }
+        .offers-con img{
+            width: 300px;
+            height:200px; 
+            border-radius:0.5pc;
+        }
+        .link-btn{
+            text-decoration: none;
+            background-color: brown;
+            color: white;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 20px;           
+            padding: 2px 8px;
+            margin-bottom: 1pc;
+        }
+        .link-btn:hover{
+            background-color: lightgreen;
+        }
+        .footer-header{
+            color: lightgray; 
+            font-size:20px; 
+            font-weight:600;
+        }
+        .footer-email{
+            color:lightgray;
+        }
+        .footer-email a{
+            text-decoration: none;
+            font-size: 20px;
+        }
+    </style>
+        {% block content %}
+
+        {% endblock %}
+        
+    <!--footer-->
+    <footer style="background-color:white" id="footer">  
+        <section style="background-color:black;">
+            <div class="container">
+                <div class="footer-header" style="text-align:center;">
+                    <br>
+                    <p style="font-family: Comic Sans MS, Comic Sans, cursive"> new & amazing snorkeling deals comming soon! </p>
+                    <h3><b>Most Amazing Deals</b></h3>
+                    <div class=" pop-deals py-2 font-mono">
+                        <a href="{% url 'mombasa'%}" class="link-btn rounded-xl">Mombasa</a>
+                        <a href="{% url 'diani'%}" class="link-btn rounded-xl">Diani</a>
+                        <a href="{% url 'wasini'%}" class="link-btn rounded-xl">Wasini</a>
+                    </div>
+                </div>
+                <div class="row d-flex " style="margin-top: 2pc; padding-bottom:1pc;">
+                    <div class="contacts-area col-md-4 col-sm-4 col-xs-10">
+                        <h4 style="color: lightgray;">Follow us on </h4>
+                        {% for Contact in Contacts %}
+                                <div class="d-flex">
+                                    <a href="{{ Contact.instagram }}" style="font-size: 20px; color: green; font-weight:500; padding-right:1pc;"><i class="bi-instagram"></i></a>
+                                    <a href="{{ Contact.facebook }}" style="font-size: 20px; color: green; font-weight:500; padding-right:1pc;"><i class="bi-facebook"></i></a>
+                                    <a href="#!" style="font-size: 20px; color: green; font-weight:500; padding-right:1pc;"><i class="bi-whatsapp"></i></a>                                
+                                </div>
+                            </div>
+                            <div class="footer-contact col-md-4 col-sm-4 col-xs-10">
+                                <div class="footer-email" >
+                                    <h3><b>Email: </b>
+                                    <a href="mailto:{{ Contact.email }}">{{ Contact.email }}</a></h3>
+                                </div>
+                                <div class="footer-email">
+                                    <h3><b>Phone: </b>
+                                    <a href="#!"> +{{ Contact.phone_number }}</a></h3>
+                                </div>                        
+                            </div>
+                        {% endfor %}
+                        <div class="col-md-4 col-sm-4 col-xs-10" style="color: lightgray;">
+                            <h2><b>Country's Tier one</b></h2>
+                            <p>Over 200 amazing deals for you & those around you.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>                   
+        </section>          
+        <div class="below-footer">
+            <p style="text-align: center;" class="py-1 text-sm">Copyrights @ 2024 M&N Group. All Rights Reserved</p>
+        </div>              
+    </footer>
+    <!--js-->
+    <script>
+        window.onscroll= function() {stickynavbar()};
+
+        var navbar = document.getElementById("navbar-section");
+        var sticky = navbar.offsetTop;
+
+        function stickynavbar(){
+            if(window.pageYOffset >= sticky){
+                navbar.classList.add("sticky-navbar");
+            }else{
+                navbar.classList.remove("sticky-navbar");
+            }
+        }
+    </script>
+    <script src="{% static 'function.js'%}"></script>
+    <script src="{% static 'js/bootstrap.js'%}"></script>
+    <script src="{% static 'js/bootstrap.min.js'%}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
