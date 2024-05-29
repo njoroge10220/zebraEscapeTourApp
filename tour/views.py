@@ -158,24 +158,21 @@ def register(request):
                     else:
                         form = 3 # username is okay continue
                 
-            if '@' in email:
-                form = 4 # email is okay continue
-            else:
-                form = 5 # email requires @
-            
-            if len(password) < 5:
-                form = 6 # enter a complete password of atleast 5 characters
-            else:
-                form = 7 # password is okay continue
-                
-            if con_password != password:
-                form = 8 # con_password is not same to password
-            else:
-                form = 9 # confirmation password is okay continue to save
-        
-                if form != 0 or form != 1 or form != 2 or form != 5 or form != 6 or form != 8:        
-                    new_user = Regular_User(username=username, email=email, password=password, con_password=con_password)
-                    new_user.save() 
+                if '@' not in email:
+                    form = 5 # email requires @ 
+                else:
+                    form = 4 # email is okay continue                
+                    if len(password) < 5:
+                        form = 6 # enter a complete password of atleast 5 characters
+                    else:
+                        form = 7 # password is okay continue                        
+                        if con_password != password:
+                            form = 8 # con_password is not same to password
+                        else:
+                            form = 9 # confirmation password is okay continue to save                    
+                            if form != 0 or form != 1 or form != 2 or form != 5 or form != 6 or form != 8:        
+                                new_user = Regular_User(username=username, email=email, password=password, con_password=con_password)
+                                new_user.save() 
                 
         return render(request, 'register.html', {'form' : form, 'Places': Places, 'Pictures': Pictures, 'Listings' : Listings, 'Contacts': Contacts, 'Website_Images': Website_Images})          
     
