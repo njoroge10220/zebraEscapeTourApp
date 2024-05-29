@@ -156,8 +156,8 @@ def register(request):
                     if username == user.username:
                         form = 2 # username is taken try another username
                     else:
-                        form = 3 # username is okay continue
-                
+                        form = 3 # username is okay continue      
+                                  
                 if '@' not in email:
                     form = 5 # email requires @ 
                 else:
