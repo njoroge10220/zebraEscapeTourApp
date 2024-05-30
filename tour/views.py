@@ -191,15 +191,18 @@ def unregister(request):
         email = request.POST.get('email')
             
         form = 0
-        for user in Regular_Users:
-            if username == user.username and email == user.email:
-                form = 1    
-                user.delete()           
-                Regular_User.objects.filter(username=username , email=email).delete()
-            elif username != user.username or email != user.email:
-                form = 2
-            else:
-                form = 3                                                
+        if username=='' or email=='':
+            form = 0 # fill in all the required details
+        else:
+            for user in Regular_Users:
+                if username == user.username and email == user.email:
+                    form = 1    
+                    user.delete()           
+                    Regular_User.objects.filter(username=username , email=email).delete()
+                elif username != user.username or email != user.email:
+                    form = 2
+                else:
+                    form = 3                                                
                 
         return render(request, 'unregister.html', {'form' : form, 'Places': Places, 'Pictures': Pictures, 'Listings' : Listings, 'Contacts': Contacts, 'Website_Images': Website_Images})          
     

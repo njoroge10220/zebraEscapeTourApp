@@ -47,8 +47,23 @@
         {% endif %}
         {% if form == 2 %}
         <div class="alert alert-info">
-            <strong>Username is taken!</strong><P>This username is taken enter another!</P> 
+            <strong>Username is taken!</strong><P>This username is taken pick another Username to become a regular!</P> 
         </div>       
+        {% endif %}
+        {% if form == 5 %}
+        <div class="alert alert-warning">
+            <strong>Incomplete Email!</strong><P>Enter a complete Email that has an @ to become a regular!</P> 
+        </div>
+        {% endif %}
+        {% if form == 6 %}
+        <div class="alert alert-warning">
+            <strong>Incomplete Password!</strong><P> Enter a complete Password with altleast 5 characters to become a regular!</P> 
+        </div>
+        {% endif %}
+        {% if form == 8 %}
+        <div class="alert alert-warning">
+            <strong>Incorrect password confirmation!</strong><P> Enter a confirmation password that matches the password to become a regular!</P> 
+        </div>
         {% endif %}
         {% if form == 9 %}
         <div class="alert alert-success"> 
