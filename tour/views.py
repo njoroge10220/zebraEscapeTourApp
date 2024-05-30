@@ -187,14 +187,15 @@ def unregister(request):
     Regular_Users = Regular_User.objects.all()
 
     if request.method == "POST":       
-        username = request.POST.get('username1')
-        email = request.POST.get('email1')
+        username = request.POST.get('username')
+        email = request.POST.get('email')
             
         form = 0
         for user in Regular_Users:
             if username == user.username and email == user.email:
-                form = 1
-                user.delete()
+                form = 1    
+                user.delete()           
+                Regular_User.objects.filter(username=username , email=email).delete()
             elif username != user.username or email != user.email:
                 form = 2
             else:
