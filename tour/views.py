@@ -189,24 +189,17 @@ def unregister(request):
     if request.method == "POST":       
         username = request.POST.get('username')
         email = request.POST.get('email')
-        password = request.POST.get('password')
-        con_password = request.POST.get('con_password')         
-
-        form = 0   # 1 2 3 - username  4 5 - email  6 7 - password  8 9 - confirm password
-        if username=='' or email=='' or password=='' or con_password=='':
-            form = 0
-        else:    
-            if len(username) < 4:
-                form = 1 # username is short
-            else: # name should not be matching another in the db
-                for user in  Regular_Users:
-                    if username == user.username:
-                        form = 2 # username is taken
-                                  
             
-        
-
-               
+        form = 0
+        for user in Regular_Users:
+            if username == user.username and email == user.email:
+                form = 1
+                user.delete()
+            elif username != user.username or email != user.email:
+                form = 2
+            else:
+                form = 3                                                
+                
         return render(request, 'unregister.html', {'form' : form, 'Places': Places, 'Pictures': Pictures, 'Listings' : Listings, 'Contacts': Contacts, 'Website_Images': Website_Images})          
     
     return render(request, 'unregister.html', {'Places': Places, ' Regular_Users':  Regular_Users, 'Pictures': Pictures, 'Listings' : Listings, 'Contacts': Contacts, 'Website_Images': Website_Images})   
