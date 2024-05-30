@@ -22,12 +22,12 @@
     </nav>
     <form method="POST" action="{% url 'unregister' %}"  class="d-block row justify-content-center">
         {% csrf_token %}
-        <input type="text" name="username" class="form-control me-2 rounded-pill py-2 fs-6 fw-medium" style="margin-top: 2pc;" placeholder="username" aria-label="username">
+        <input type="text" name="username1" class="form-control me-2 rounded-pill py-2 fs-6 fw-medium" style="margin-top: 2pc;" placeholder="username" aria-label="username">
         <br>
-        <input type="text" name="email" class="form-control me-2 rounded-pill py-2 fs-6 fw-medium" style="margin-top: 1pc;" placeholder="email" aria-label="email">
+        <input type="text" name="email1" class="form-control me-2 rounded-pill py-2 fs-6 fw-medium" style="margin-top: 1pc;" placeholder="email" aria-label="email">
         <br>
         <div class="row justify-content-center">
-            <button class="btn btn-outline-success rounded-pill col-sm-4 col-4 fw-bold border-green-900 " type="submit" name="register">unregister</button>
+            <button class="btn btn-outline-success rounded-pill col-sm-4 col-4 fw-bold border-green-900 " type="submit" name="unregister">unregister</button>
         </div><br>
     </form>  
     <div class=""> 

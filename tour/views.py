@@ -187,8 +187,8 @@ def unregister(request):
     Regular_Users = Regular_User.objects.all()
 
     if request.method == "POST":       
-        username = request.POST.get('username')
-        email = request.POST.get('email')
+        username = request.POST.get('username1')
+        email = request.POST.get('email1')
             
         form = 0
         for user in Regular_Users:

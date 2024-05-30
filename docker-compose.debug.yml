@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  touism:
+    image: touism
+    build:
+      context: .
+      dockerfile: ./Dockerfile
