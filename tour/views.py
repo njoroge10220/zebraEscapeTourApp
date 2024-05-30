@@ -197,8 +197,7 @@ def unregister(request):
             for user in Regular_Users:
                 if username == user.username and email == user.email:
                     form = 1    
-                    user.delete()           
-                    Regular_User.objects.filter(username=username , email=email).delete()
+                    user.delete()                    
                 elif username != user.username or email != user.email:
                     form = 2
                 else:
