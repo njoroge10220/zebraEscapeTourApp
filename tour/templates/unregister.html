@@ -20,7 +20,7 @@
             </div>
         </div>
     </nav>
-    <form method="POST" action="{% url 'unregister' %}"  class="d-block row justify-content-center">
+    <form method="POST" class="d-block row justify-content-center">
         {% csrf_token %}
         <input type="text" name="username" class="form-control me-2 rounded-pill py-2 fs-6 fw-medium" style="margin-top: 2pc;" placeholder="username" aria-label="username">
         <br>
@@ -37,10 +37,15 @@
         </div>
         {% endif %}
     </div> 
-    {% if form == 2 or form == 3 %}
+    {% if form == 2 %}
     <div class="alert alert-warning">
         <strong>Info!</strong><p>Input correct username and email to unregister!</p>
     </div>
-    {% endif %}       
+    {% endif %}     
+    {% if form == 3 %}
+    <div class="alert alert-warning">
+        <strong>Info!</strong><p>There is no such regular with us!</p>
+    </div>
+    {% endif %}   
 </div>
 {% endblock%}

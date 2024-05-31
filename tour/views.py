@@ -138,14 +138,14 @@ def register(request):
     Listings = Listing.objects.all()
     Website_Images = Website_Image.objects.all()
     Regular_Users = Regular_User.objects.all()
-
+  
     if request.method == "POST":       
         username = request.POST.get('username')
         email = request.POST.get('email')
         password = request.POST.get('password')
         con_password = request.POST.get('con_password')         
 
-        form = 0   # 1 2 3 - username  4 5 - email  6 7 - password  8 9 - confirm password
+        form = 0 # 1 2 3 - username  4 5 - email  6 7 - password  8 9 - confirm password
         if username=='' or email=='' or password=='' or con_password=='':
             form = 0 # fill in all the required details
         else:    
@@ -155,6 +155,7 @@ def register(request):
                 for user in  Regular_Users:
                     if username == user.username:
                         form = 2 # username is taken try another username
+                       
                     else:
                         form = 3 # username is okay continue                                     
                         if '@' not in email:
@@ -172,6 +173,7 @@ def register(request):
                                     if form != 0 or form != 1 or form != 2 or form != 5 or form != 6 or form != 8:        
                                         new_user = Regular_User(username=username, email=email, password=password, con_password=con_password)
                                         new_user.save() 
+                                       
                 
         return render(request, 'register.html', {'form' : form, 'Places': Places, 'Pictures': Pictures, 'Listings' : Listings, 'Contacts': Contacts, 'Website_Images': Website_Images})          
     
@@ -197,7 +199,8 @@ def unregister(request):
             for user in Regular_Users:
                 if username == user.username and email == user.email:
                     form = 1    
-                    user.delete()                    
+                    user.delete()
+                    
                 elif username != user.username or email != user.email:
                     form = 2
                 else:
