@@ -20,7 +20,7 @@
             </div>
         </div>
     </nav>
-    <form method="POST" action="{% url 'register' %}"  class="d-block row justify-content-center">
+    <form method="POST" class="d-block row justify-content-center">
         {% csrf_token %}
         <input type="text" name="username" class="form-control me-2 rounded-pill py-2 fs-6 fw-medium" style="margin-top: 2pc;" placeholder="username" aria-label="username">
         <br>
