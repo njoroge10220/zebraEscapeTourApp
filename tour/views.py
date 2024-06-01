@@ -23,7 +23,9 @@ def home(request):
     
     if request.method == "POST":
         searchedInfo = request.POST.get('searched')
-        if searchedInfo:
+        if searchedInfo=="":
+            return redirect('home')
+        elif searchedInfo!="":
             search_finding = Place.objects.filter(name__contains=searchedInfo) 
             return render(request, 'search_result.html', {'search_finding' : search_finding, 'Website_Images': Website_Images, 'Contacts': Contacts, 'searchedInfo' :  searchedInfo})
         else:        
