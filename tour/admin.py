@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Place, Picture, Listing, Contact, Website_Image, Place_Wording,Regular_User
+from .models import Place, Picture, Listing, Contact, Website_Image, Place_Wording,Regular_User, Feedback
 
 # Register your models here.
 
@@ -11,3 +11,4 @@ admin.site.register(Contact)
 admin.site.register(Website_Image)
 admin.site.register(Place_Wording)
 admin.site.register(Regular_User)
+admin.site.register(Feedback)

@@ -73,3 +73,13 @@ class Regular_User(models.Model):
     
     def __str__(self):
         return f"{self.username}-{self.email}-{self.password}-{self.con_password}"
+    
+    
+class Feedback(models.Model):
+    user = models.ForeignKey(Regular_User, default=None, on_delete=models.CASCADE)
+    feedback = models.TextField()
+    creat_time = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return self.user.username
+    

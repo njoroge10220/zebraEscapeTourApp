@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 
-from .models import Place, Picture, Listing, Contact, Website_Image, Place_Wording, Regular_User
+from .models import Place, Picture, Listing, Contact, Website_Image, Place_Wording, Regular_User, Feedback
 
 
 # Create your views here.
@@ -41,9 +41,10 @@ def mombasa(request):
     Pictures = Picture.objects.filter(place=1)
     Listings = Listing.objects.all()
     Website_Images = Website_Image.objects.all()
-    Place_Wordings =Place_Wording.objects.all()
+    Place_Wordings = Place_Wording.objects.all()
+    Feedbacks = Feedback.objects.all()
    
-    return render(request, 'mombasa.html', {'Contacts': Contacts, 'Places': Places, 'Place_Wordings': Place_Wordings, 'Pictures': Pictures, 'Listings' : Listings, 'Website_Images': Website_Images,})
+    return render(request, 'mombasa.html', {'Contacts': Contacts, 'Feedbacks': Feedbacks, 'Places': Places, 'Place_Wordings': Place_Wordings, 'Pictures': Pictures, 'Listings' : Listings, 'Website_Images': Website_Images,})
 
 
 def diani(request):
@@ -53,8 +54,9 @@ def diani(request):
     Listings = Listing.objects.all()
     Website_Images = Website_Image.objects.all()
     Place_Wordings =Place_Wording.objects.all()
+    Feedbacks = Feedback.objects.all()
     
-    return render(request, 'diani.html', {'Contacts': Contacts, 'Places': Places, 'Place_Wordings': Place_Wordings, 'Pictures': Pictures, 'Listings' : Listings, 'Website_Images': Website_Images,})
+    return render(request, 'diani.html', {'Contacts': Contacts, 'Feedbacks': Feedbacks, 'Places': Places, 'Place_Wordings': Place_Wordings, 'Pictures': Pictures, 'Listings' : Listings, 'Website_Images': Website_Images,})
 
 
 def wasini(request):
@@ -64,8 +66,9 @@ def wasini(request):
     Listings = Listing.objects.all()
     Website_Images = Website_Image.objects.all()
     Place_Wordings =Place_Wording.objects.all()
+    Feedbacks = Feedback.objects.all()
     
-    return render(request, 'wasini.html', {'Contacts': Contacts, 'Places': Places, 'Place_Wordings': Place_Wordings, 'Pictures': Pictures, 'Listings' : Listings, 'Website_Images': Website_Images,})
+    return render(request, 'wasini.html', {'Contacts': Contacts, 'Feedbacks': Feedbacks, 'Places': Places, 'Place_Wordings': Place_Wordings, 'Pictures': Pictures, 'Listings' : Listings, 'Website_Images': Website_Images,})
 
 def watamu(request):
     Contacts = Contact.objects.all()
@@ -74,8 +77,9 @@ def watamu(request):
     Listings = Listing.objects.all()
     Website_Images = Website_Image.objects.all()
     Place_Wordings =Place_Wording.objects.all()
+    Feedbacks = Feedback.objects.all()
     
-    return render(request, 'watamu.html', {'Contacts': Contacts, 'Places': Places, 'Place_Wordings': Place_Wordings, 'Pictures': Pictures, 'Listings' : Listings, 'Website_Images': Website_Images,})
+    return render(request, 'watamu.html', {'Contacts': Contacts, 'Feedbacks': Feedbacks, 'Places': Places, 'Place_Wordings': Place_Wordings, 'Pictures': Pictures, 'Listings' : Listings, 'Website_Images': Website_Images,})
 
 def shimoni(request):
     Contacts = Contact.objects.all()
@@ -84,8 +88,9 @@ def shimoni(request):
     Listings = Listing.objects.all()
     Website_Images = Website_Image.objects.all()
     Place_Wordings =Place_Wording.objects.all()
+    Feedbacks = Feedback.objects.all()
     
-    return render(request, 'shimoni.html', {'Contacts': Contacts, 'Places': Places, 'Place_Wordings': Place_Wordings, 'Pictures': Pictures, 'Listings' : Listings, 'Website_Images': Website_Images,})
+    return render(request, 'shimoni.html', {'Contacts': Contacts, 'Feedbacks': Feedbacks, 'Places': Places, 'Place_Wordings': Place_Wordings, 'Pictures': Pictures, 'Listings' : Listings, 'Website_Images': Website_Images,})
 
 def mambrui(request):
     Contacts = Contact.objects.all()
@@ -94,8 +99,9 @@ def mambrui(request):
     Listings = Listing.objects.all()
     Website_Images = Website_Image.objects.all()
     Place_Wordings =Place_Wording.objects.all()
+    Feedbacks = Feedback.objects.all()
     
-    return render(request, 'mambrui.html', {'Contacts': Contacts, 'Places': Places, 'Place_Wordings': Place_Wordings, 'Pictures': Pictures, 'Listings' : Listings, 'Website_Images': Website_Images,})
+    return render(request, 'mambrui.html', {'Contacts': Contacts, 'Feedbacks': Feedbacks, 'Places': Places, 'Place_Wordings': Place_Wordings, 'Pictures': Pictures, 'Listings' : Listings, 'Website_Images': Website_Images,})
 
 def hotels(request):
     Contacts = Contact.objects.all()

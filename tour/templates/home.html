@@ -162,18 +162,18 @@
         </div>
         <div class="row justify-content-center">
             {% for Place in Places %}                    
-                    <div class="mt-6 col-sm-6 d-flex">
-                        <div class="w-100 justify-content-center d-flex">                         
-                            <div class="">
-                                <img src="{{ Place.image.url }}" alt="packages {{Place.name}} image" class="rounded-xl w-100 h-75">
-                            </div>
-                            <div class="py-10 ml-3">
-                                <h5 class="fw-bold text-2xl font-mono">{{Place.name}} packages</h5>
-                                <h5 class="fw-bold text-base m-2">{{Place.day}} Days & {{nights}} nights</h5>
-                                <a href="{{Place.url}}" class="link-btn rounded-xl m-3 text-align-center font-mono antialiased fs-1.5">DETAILS</a>
-                            </div>
+                <div class="mt-6 col-sm-6 d-flex">
+                    <div class="w-100 justify-content-center d-flex">                         
+                        <div class="">
+                            <img src="{{ Place.image.url }}" alt="packages {{Place.name}} image" class="rounded-xl w-100 h-75">
+                        </div>
+                        <div class="py-10 ml-3">
+                            <h5 class="fw-bold text-2xl font-mono">{{Place.name}} packages</h5>
+                            <h5 class="fw-bold text-base m-2">{{Place.day}} Days & {{nights}} nights</h5>
+                            <a href="{{ Place.url }}" class="link-btn rounded-xl m-3 text-align-center font-mono antialiased fs-1.5">DETAILS</a>
                         </div>
                     </div>
+                </div>
             {% endfor %}          
         </div>               
     </div>
@@ -185,7 +185,7 @@
             <h3 >Special & Affordable</h3>
             <h2>Offers</h2>
             <p>More than 10 special offers, for you to pull through at a friendly cut in any part along the coast!</p>
-        </div>        
+        </div>         
         <div class="row justify-content-center">
             {% for Place in Places %}
                 <div class="d-flex mt-5 col-sm-4">
