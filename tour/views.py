@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render
 
 from .models import Place, Picture, Listing, Contact, Website_Image, Place_Wording, Regular_User
 
+
 # Create your views here.
 
 def home(request):
@@ -169,12 +170,11 @@ def register(request):
                                 if con_password != password:
                                     form = 8 # con_password is not same to password
                                 else:
-                                    form = 9 # confirmation password is okay continue to save                    
-                                    if form != 0 or form != 1 or form != 2 or form != 5 or form != 6 or form != 8:        
+                                    form = 9 # confirmation password is okay continue to save                                          
+                                    if form != 0 or form != 1 or form != 2 or form != 5 or form != 6 or form != 8:
                                         new_user = Regular_User(username=username, email=email, password=password, con_password=con_password)
-                                        new_user.save() 
-                                       
-                
+                                        new_user.save()
+
         return render(request, 'register.html', {'form' : form, 'Places': Places, 'Pictures': Pictures, 'Listings' : Listings, 'Contacts': Contacts, 'Website_Images': Website_Images})          
     
     return render(request, 'register.html', {'Places': Places, ' Regular_Users':  Regular_Users, 'Pictures': Pictures, 'Listings' : Listings, 'Contacts': Contacts, 'Website_Images': Website_Images})   
