@@ -125,5 +125,20 @@
 {% endblock %}
 
 {% block content4 %}
-
+<div class="container">
+   <div class="row">
+       <div class="">
+           <div class="feedback-area">                                        
+               <form method="POST" action="{% url 'mombasa' %}" class="d-block">
+                  {% csrf_token %}
+                  <input type="text" name="feedback" class="form-control rounded-pill border-green-900 py-2 fs-6 fw-medium"placeholder=" add your feedback here..." aria-label="feedback">
+                  <br>
+                  <div class="row justify-content-center">
+                     <button class="btn btn-outline-success rounded-pill col-sm-4 col-4 fw-bold border-green-900" type="submit">post</button> <br>
+                  </div>
+               </form> <br>                       
+           </div>
+       </div>
+   </div>
+</div>
 {% endblock %}

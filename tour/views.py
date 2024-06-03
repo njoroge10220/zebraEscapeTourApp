@@ -34,6 +34,17 @@ def home(request):
     
     return render(request, 'home.html',{'Places': Places, 'Pictures': Pictures, 'Listings' : Listings, 'Contacts': Contacts, 'Website_Images': Website_Images, 'nights': nights, 'x': x})  
     
+def placeBase(request):
+    Contacts = Contact.objects.all()
+    Places = Place.objects.all()
+    Pictures = Picture.objects.filter(place=1)
+    Listings = Listing.objects.all()
+    Website_Images = Website_Image.objects.all()
+    Place_Wordings = Place_Wording.objects.all()
+    Feedbacks = Feedback.objects.all()
+
+    return render(request, 'mombasa.html', {'Contacts': Contacts, 'Feedbacks': Feedbacks, 'Places': Places, 'Place_Wordings': Place_Wordings, 'Pictures': Pictures, 'Listings' : Listings, 'Website_Images': Website_Images,})
+
 
 def mombasa(request):
     Contacts = Contact.objects.all()
@@ -43,7 +54,7 @@ def mombasa(request):
     Website_Images = Website_Image.objects.all()
     Place_Wordings = Place_Wording.objects.all()
     Feedbacks = Feedback.objects.all()
-   
+
     return render(request, 'mombasa.html', {'Contacts': Contacts, 'Feedbacks': Feedbacks, 'Places': Places, 'Place_Wordings': Place_Wordings, 'Pictures': Pictures, 'Listings' : Listings, 'Website_Images': Website_Images,})
 
 
@@ -163,8 +174,7 @@ def register(request):
             else: # name should not be matching another in the db
                 for user in  Regular_Users:
                     if username == user.username:
-                        form = 2 # username is taken try another username
-                       
+                        form = 2 # username is taken try another username                       
                     else:
                         form = 3 # username is okay continue                                     
                         if '@' not in email:
@@ -208,7 +218,6 @@ def unregister(request):
                 if username == user.username and email == user.email:
                     form = 1    
                     user.delete()
-                    
                 elif username != user.username or email != user.email:
                     form = 2
                 else:

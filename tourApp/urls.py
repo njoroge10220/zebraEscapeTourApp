@@ -23,7 +23,7 @@ from tour import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
-    path('search_result', views.home, name='search_result'),
+    path('search_result', views.home, name='search_result'),   
     path('mombasa', views.mombasa, name='mombasa'),
     path('diani', views.diani, name='diani'),
     path('watamu', views.watamu, name='watamu'),
