@@ -128,7 +128,15 @@
 <div class="container">
    <div class="row">
        <div class="">
-           <div class="feedback-area">                                        
+           <div class="feedback-area">
+            <div class="">
+               <div class="feedbacks-section">
+                   <div class="comments-container">
+                       <div class="comment">
+                           <h1>comment</h1>
+                       </div>
+                   </div>
+               </div>                                        
                <form method="POST" action="{% url 'mombasa' %}" class="d-block">
                   {% csrf_token %}
                   <input type="text" name="feedback" class="form-control rounded-pill border-green-900 py-2 fs-6 fw-medium"placeholder=" add your feedback here..." aria-label="feedback">

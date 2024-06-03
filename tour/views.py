@@ -34,17 +34,6 @@ def home(request):
     
     return render(request, 'home.html',{'Places': Places, 'Pictures': Pictures, 'Listings' : Listings, 'Contacts': Contacts, 'Website_Images': Website_Images, 'nights': nights, 'x': x})  
     
-def placeBase(request):
-    Contacts = Contact.objects.all()
-    Places = Place.objects.all()
-    Pictures = Picture.objects.filter(place=1)
-    Listings = Listing.objects.all()
-    Website_Images = Website_Image.objects.all()
-    Place_Wordings = Place_Wording.objects.all()
-    Feedbacks = Feedback.objects.all()
-
-    return render(request, 'mombasa.html', {'Contacts': Contacts, 'Feedbacks': Feedbacks, 'Places': Places, 'Place_Wordings': Place_Wordings, 'Pictures': Pictures, 'Listings' : Listings, 'Website_Images': Website_Images,})
-
 
 def mombasa(request):
     Contacts = Contact.objects.all()
