@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import AbstractBaseUser
 
 # Create your models here.
 
@@ -65,14 +66,15 @@ class Website_Image(models.Model):
         return self.email.email
     
     
-class Regular_User(models.Model):
+class Regular_User (AbstractBaseUser):
     username = models.CharField(max_length=100)
     email = models.EmailField()
     password = models.CharField(max_length=100)
     con_password = models.CharField(max_length=100)
+    last_login = models.DateTimeField(('last login'), blank=True, null=True)
     
     def __str__(self):
-        return f"{self.username}-{self.email}-{self.password}-{self.con_password}"
+        return f"{self.username}-{self.email}-{self.password}-{self.con_password}-{self.last_login}"
     
     
 class Feedback(models.Model):

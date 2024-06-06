@@ -17,22 +17,34 @@
 <br>
 <!--Gallery-->
 <section class="gallery-section">
-   <div class="container h-75">
-      <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+   <div class="container d-flex col-sm-6">
+      <div id="carouselExampleSlidesOnly" class="carousel slide w-50" data-bs-ride="carousel">
          <div class="carousel-inner container-fill">
-             <div class="row h-75">
-                 <div class="h-75">
-                  {% for Picture in Pictures %}                                              
-                     <div class="carousel-item w-75 {% if forloop.counter == 1 %} active {% endif %}" style="height: 500px;" id="slide {{ forloop.counter}}">
-                        <img src="{{ Picture.images.url }}" class="d-block rounded-3xl img-thumbnail w-75 h-100 slide-img" alt="explore {{Place.name}} image">
-                     </div>                         
-                  {% endfor %}
+             <div class="row ">
+                 <div class="">                     
+                     {% for Picture in Pictures %}                                              
+                           <div class="carousel-item {% if forloop.counter == 1 %} active {% endif %}" style="height: 500px;" id="slide {{ forloop.counter}}">
+                              <img src="{{ Picture.images.url }}" class="d-block rounded-3xl img-thumbnail w-100 h-100 slide-img" alt="explore {{Place.name}} image">
+                           </div>                         
+                     {% endfor %}
                  </div>
              </div>
          </div>
       </div>
+      <div class="w-50 text-center">
+         <!--packages-section-->
+         <section class="packages-section" id="packages-section">
+            <div class="container">
+               <div class="row justify-content-center">
+                  <div class="packages-header fs-3 fw-bold text-center">
+                     <h2>packages</h2>
+                  </div>
+               </div>
+            </div>
+         </section>
+      </div>
    </div>
-</section>     
+</section>
 
 <!--overview-section-->
 <section class="overview-section" id="overview-section">
@@ -72,17 +84,6 @@
             The area’s history dates back to the 8th Century AD, with influences from Arab and Indian traders shaping the unique Swahili culture that thrives today. <br>
          </p>
       </div>  
-   </div>
-</section>
-
-<!--packages-section-->
-<section class="packages-section" id="packages-section">
-   <div class="container">
-      <div class="row justify-content-center">
-         <div class="packages-header fs-3 fw-bold text-center">
-            <h2>packages</h2>
-         </div>
-      </div>
    </div>
 </section>
 

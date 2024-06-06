@@ -1,4 +1,5 @@
 from django.shortcuts import redirect, render
+from django.contrib.auth import authenticate, login
 
 from .models import Place, Picture, Listing, Contact, Website_Image, Place_Wording, Regular_User, Feedback
 
@@ -43,7 +44,10 @@ def mombasa(request):
     Website_Images = Website_Image.objects.all()
     Place_Wordings = Place_Wording.objects.all()
     Feedbacks = Feedback.objects.all()
-
+    
+    if request.method == "POST":   
+        feedbacksms =  request.POST.get('feedback') 
+          
     return render(request, 'mombasa.html', {'Contacts': Contacts, 'Feedbacks': Feedbacks, 'Places': Places, 'Place_Wordings': Place_Wordings, 'Pictures': Pictures, 'Listings' : Listings, 'Website_Images': Website_Images,})
 
 
