@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login
+from .forms import UserForm
 
 from .models import Place, Picture, Listing, Contact, Website_Image, Place_Wording, Regular_User, Feedback
 
@@ -190,6 +191,27 @@ def register(request):
     
     return render(request, 'register.html', {'Places': Places, ' Regular_Users':  Regular_Users, 'Pictures': Pictures, 'Listings' : Listings, 'Contacts': Contacts, 'Website_Images': Website_Images})   
 
+def login(request):
+    Contacts = Contact.objects.all()
+    Places = Place.objects.all()
+    Pictures = Picture.objects.all()
+    Listings = Listing.objects.all()
+    Website_Images = Website_Image.objects.all()
+    Regular_Users = Regular_User.objects.all()
+
+    if request.method == "POST":
+        login_username = request.POST.get('login-username')
+        
+        form = 0
+        user = authenticate(request, username=login_username)
+        if user is not None:
+            login(request, user)
+            form = 1
+        return render(request, 'login.html', {'form':form, 'Places': Places, ' Regular_Users':  Regular_Users, 'Pictures': Pictures, 'Listings' : Listings, 'Contacts': Contacts, 'Website_Images': Website_Images})   
+
+            #return redirect('home')
+            
+    return render(request, 'login.html', {'Places': Places, ' Regular_Users':  Regular_Users, 'Pictures': Pictures, 'Listings' : Listings, 'Contacts': Contacts, 'Website_Images': Website_Images})   
 
 def unregister(request):
     Contacts = Contact.objects.all()
