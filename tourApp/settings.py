@@ -29,6 +29,16 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+#emailing logged in will use this
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.example.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'jmnjoroge13@gmail.com'
+EMAIL_HOST_PASSWORD = 'NJOROGE10220'
+DEFAULT_FROM_EMAIL = 'jmnjoroge13@gmail.com'
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,7 +49,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tour',
-     'bootstrap5',
+    'bootstrap5',
+    'tourApp',
 ]
 
 MIDDLEWARE = [

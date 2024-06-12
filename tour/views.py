@@ -1,6 +1,5 @@
 from django.shortcuts import redirect, render
-from django.contrib.auth import authenticate, login
-from .forms import UserForm
+from django.urls import reverse
 
 from .models import Place, Picture, Listing, Contact, Website_Image, Place_Wording, Regular_User, Feedback
 
@@ -153,7 +152,7 @@ def register(request):
     Website_Images = Website_Image.objects.all()
     Regular_Users = Regular_User.objects.all()
   
-    if request.method == "POST":       
+    if request.method == "POST":          
         username = request.POST.get('username')
         email = request.POST.get('email')
         password = request.POST.get('password')
@@ -168,9 +167,9 @@ def register(request):
             else: # name should not be matching another in the db
                 for user in  Regular_Users:
                     if username == user.username:
-                        form = 2 # username is taken try another username                       
+                        form = 2 # username is taken try another username
                     else:
-                        form = 3 # username is okay continue                                     
+                        form = 3 # username is okay continue                                                       
                         if '@' not in email:
                             form = 5 # email requires @ 
                         else:
@@ -182,10 +181,10 @@ def register(request):
                                 if con_password != password:
                                     form = 8 # con_password is not same to password
                                 else:
-                                    form = 9 # confirmation password is okay continue to save                                          
-                                    if form != 0 or form != 1 or form != 2 or form != 5 or form != 6 or form != 8:
-                                        new_user = Regular_User(username=username, email=email, password=password, con_password=con_password)
-                                        new_user.save()
+                                    form = 9 # confirmation password is okay continue to save                                        
+        if form == 9:
+            new_user = Regular_User(username=username, email=email, password=password, con_password=con_password)
+            new_user.save()
 
         return render(request, 'register.html', {'form' : form, 'Places': Places, 'Pictures': Pictures, 'Listings' : Listings, 'Contacts': Contacts, 'Website_Images': Website_Images})          
     
@@ -200,17 +199,22 @@ def login(request):
     Regular_Users = Regular_User.objects.all()
 
     if request.method == "POST":
-        login_username = request.POST.get('login-username')
-        
+        login_email = request.POST.get('login-email')
+        #the user is active
         form = 0
-        user = authenticate(request, username=login_username)
-        if user is not None:
-            login(request, user)
-            form = 1
-        return render(request, 'login.html', {'form':form, 'Places': Places, ' Regular_Users':  Regular_Users, 'Pictures': Pictures, 'Listings' : Listings, 'Contacts': Contacts, 'Website_Images': Website_Images})   
-
-            #return redirect('home')
+        if login_email == "":
+            form = 0
+        else:
+            for user in Regular_Users:
+                if login_email == user.email:
+                    form = 1 #user has been logged in and email the user
+                else:
+                    form = 2 #user is not a regular tell user to become a regular first
+                                           
+                
             
+        return render(request, 'login.html', {'Places': Places, 'form' : form, ' Regular_Users':  Regular_Users, 'Pictures': Pictures, 'Listings' : Listings, 'Contacts': Contacts, 'Website_Images': Website_Images})   
+    
     return render(request, 'login.html', {'Places': Places, ' Regular_Users':  Regular_Users, 'Pictures': Pictures, 'Listings' : Listings, 'Contacts': Contacts, 'Website_Images': Website_Images})   
 
 def unregister(request):
