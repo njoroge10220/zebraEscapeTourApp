@@ -19,7 +19,7 @@
     </nav>
     <form method="POST" class="d-block row justify-content-center">
         {% csrf_token %}
-        <input type="text" name="login-email" class="form-control me-2 rounded-pill py-2 fs-6 fw-medium" style="margin-top: 2pc;" placeholder="enter your email to login" aria-label="login-email">
+        <input type="text" name="login-email" class="form-control me-2 rounded-pill py-2 fs-6 fw-medium" style="margin-top: 2pc;" placeholder="enter your email to login" aria-label="login-email" required>
         <br>
         <div class="row justify-content-center">
             <button class="btn btn-outline-success rounded-pill col-sm-4 col-4 fw-bold border-green-900 " type="submit">login</button>
@@ -27,8 +27,8 @@
     </form>
 
     {% if form == 1 %}
-    <p>
-        <strong> username you are logged in</strong>
+    <p class="alert alert-success">
+        <strong> you are logged in</strong>
     </p>
     {% endif %}
 </div>

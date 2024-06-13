@@ -22,13 +22,13 @@
     </nav>
     <form method="POST" class="d-block row justify-content-center">
         {% csrf_token %}
-        <input type="text" name="username" class="form-control me-2 rounded-pill py-2 fs-6 fw-medium" style="margin-top: 2pc;" placeholder="username" aria-label="username">
+        <input type="text" name="username" class="form-control me-2 rounded-pill py-2 fs-6 fw-medium" style="margin-top: 2pc;" placeholder="username" aria-label="username" required>
         <br>
-        <input type="text" name="email" class="form-control me-2 rounded-pill py-2 fs-6 fw-medium" style="margin-top: 1pc;" placeholder="email" aria-label="email">
+        <input type="text" name="email" class="form-control me-2 rounded-pill py-2 fs-6 fw-medium" style="margin-top: 1pc;" placeholder="email" aria-label="email" required>
         <br>
-        <input type="text" name="password" class="form-control me-2 rounded-pill py-2 fs-6 fw-medium" style="margin-top: 1pc;" placeholder="password" aria-label="password">
+        <input type="text" name="password" class="form-control me-2 rounded-pill py-2 fs-6 fw-medium" style="margin-top: 1pc;" placeholder="password" aria-label="password" required>
         <br>
-        <input type="text" name="con_password" class="form-control me-2 rounded-pill py-2 fs-6 fw-medium" style="margin-top: 1pc;" placeholder="confirm password" aria-label="confirm password">
+        <input type="text" name="con_password" class="form-control me-2 rounded-pill py-2 fs-6 fw-medium" style="margin-top: 1pc;" placeholder="confirm password" aria-label="confirm password" required>
         <br>
         <div class="row justify-content-center">
             <button class="btn btn-outline-success rounded-pill col-sm-4 col-4 fw-bold border-green-900 " type="submit">register</button>
