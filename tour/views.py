@@ -197,13 +197,14 @@ def login(request):
     Pictures = Picture.objects.all()
     Listings = Listing.objects.all()
     Website_Images = Website_Image.objects.all()
-    Regular_Users = Regular_User.objects.all()
+    #Regular_Users = Regular_User.objects.all()
 
     if request.method == "POST":
         login_email = request.POST.get('login-email')
         
         #the user is active
         form = 0
+        '''
         if login_email == "":
             form = 0
         else:
@@ -212,16 +213,17 @@ def login(request):
                     form = 1 #user has been logged in and email the user
                 else:
                     form = 2 #user is not a regular tell user to become a regular first
+        '''
+        Regular_User = authenticate(request, email=login_email)
         
-        regular = authenticate(request, email=login_email)
-        
-        if regular is not None:
-            login(request, regular)
+        if Regular_User is not None:
+            login(request, Regular_User)
+            form = 1
             return redirect('home')
              
         #return render(request, 'login.html', {'Places': Places, 'form' : form, ' Regular_Users':  Regular_Users, 'Pictures': Pictures, 'Listings' : Listings, 'Contacts': Contacts, 'Website_Images': Website_Images})   
     
-    return render(request, 'login.html', {'Places': Places, ' Regular_Users':  Regular_Users, 'Pictures': Pictures, 'Listings' : Listings, 'Contacts': Contacts, 'Website_Images': Website_Images})   
+    return render(request, 'login.html', {'Places': Places, 'Pictures': Pictures, 'Listings' : Listings, 'Contacts': Contacts, 'Website_Images': Website_Images})   
 
 def unregister(request):
     Contacts = Contact.objects.all()
