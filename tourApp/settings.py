@@ -35,7 +35,7 @@ EMAIL_HOST = 'smtp.example.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'jmnjoroge13@gmail.com'
-EMAIL_HOST_PASSWORD = 'NJOROGE10220'
+EMAIL_HOST_PASSWORD = ''
 DEFAULT_FROM_EMAIL = 'jmnjoroge13@gmail.com'
 
 
