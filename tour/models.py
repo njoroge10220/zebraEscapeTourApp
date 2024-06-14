@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
-
 # Create your models here.
 
 class Place(models.Model):
@@ -16,6 +15,7 @@ class Place(models.Model):
     
     def __str__(self):
         return self.name
+
 
 class Picture(models.Model):
     place = models.ForeignKey(Place, default=None, on_delete=models.CASCADE)
@@ -65,18 +65,21 @@ class Website_Image(models.Model):
     def __str__(self):
         return self.email.email
     
-    
+
 class Regular_User (AbstractBaseUser):
     username = models.CharField(max_length=100)
     email = models.EmailField()
     password = models.CharField(max_length=100)
     con_password = models.CharField(max_length=100)
+    
+    is_logged_in = models.BooleanField(default=False)
     last_login = models.DateTimeField(('last login'), blank=True, null=True)
     
+    
     def __str__(self):
-        return f"{self.username}-{self.email}-{self.password}-{self.con_password}-{self.last_login}"
+        return f"{self.username}-{self.email}-{self.password}-{self.con_password}-{self.is_logged_in}-{self.last_login}"
     
-    
+
 class Feedback(models.Model):
     user = models.ForeignKey(Regular_User, default=None, on_delete=models.CASCADE)
     feedback = models.TextField()
@@ -84,4 +87,5 @@ class Feedback(models.Model):
     
     def __str__(self):
         return self.user.username
+
     

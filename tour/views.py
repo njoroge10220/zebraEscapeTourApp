@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from django.urls import reverse
-from django.contrib.auth import authenticate, login
+from django.utils import timezone
 
 from .models import Place, Picture, Listing, Contact, Website_Image, Place_Wording, Regular_User, Feedback
 
@@ -197,31 +197,27 @@ def login(request):
     Pictures = Picture.objects.all()
     Listings = Listing.objects.all()
     Website_Images = Website_Image.objects.all()
-    #Regular_Users = Regular_User.objects.all()
+    Regular_Users = Regular_User.objects.all()
 
     if request.method == "POST":
         login_email = request.POST.get('login-email')
         
         #the user is active
         form = 0
-        '''
+
         if login_email == "":
             form = 0
         else:
             for user in Regular_Users:
                 if login_email == user.email:
                     form = 1 #user has been logged in and email the user
+                    user.last_login = timezone.now()
+                    user.is_logged_in = True
                 else:
                     form = 2 #user is not a regular tell user to become a regular first
-        '''
-        Regular_User = authenticate(request, email=login_email)
-        
-        if Regular_User is not None:
-            login(request, Regular_User)
-            form = 1
-            return redirect('home')
-             
-        #return render(request, 'login.html', {'Places': Places, 'form' : form, ' Regular_Users':  Regular_Users, 'Pictures': Pictures, 'Listings' : Listings, 'Contacts': Contacts, 'Website_Images': Website_Images})   
+                    user.is_logged_in = False
+
+        return render(request, 'login.html', {'Places': Places, 'form' : form, ' Regular_Users':  Regular_Users, 'Pictures': Pictures, 'Listings' : Listings, 'Contacts': Contacts, 'Website_Images': Website_Images})   
     
     return render(request, 'login.html', {'Places': Places, 'Pictures': Pictures, 'Listings' : Listings, 'Contacts': Contacts, 'Website_Images': Website_Images})   
 
@@ -239,13 +235,13 @@ def unregister(request):
             
         form = 0
         if username=='' or email=='':
-            form = 0 # fill in all the required details
+            form = 0 #fill in all the required details
         else:
             for user in Regular_Users:
-                if username == user.username and email == user.email:
+                if email == user.email:
                     form = 1    
                     user.delete()
-                elif username != user.username or email != user.email:
+                elif email != user.email:
                     form = 2
                 else:
                     form = 3                                                

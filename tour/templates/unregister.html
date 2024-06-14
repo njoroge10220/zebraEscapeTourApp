@@ -6,7 +6,7 @@
 
 {% block content %}
 <div class="container">
-    <nav >
+    <nav>
         <div class="row">
             <div class="flex d-flex py-3">
                 <a href="/" class="navbar-brand">
@@ -21,9 +21,7 @@
         </div>
     </nav>
     <form method="POST" class="d-block row justify-content-center">
-        {% csrf_token %}
-        <input type="text" name="username" class="form-control me-2 rounded-pill py-2 fs-6 fw-medium" style="margin-top: 2pc;" placeholder="username" aria-label="username" required>
-        <br>
+        {% csrf_token %}     
         <input type="text" name="email" class="form-control me-2 rounded-pill py-2 fs-6 fw-medium" style="margin-top: 1pc;" placeholder="email" aria-label="email" required>
         <br>
         <div class="row justify-content-center">
