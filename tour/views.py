@@ -213,6 +213,7 @@ def login(request):
                     form = 1 #user has been logged in and email the user
                     user.last_login = timezone.now()
                     user.is_logged_in = True
+                    user.save()
                 else:
                     form = 2 #user is not a regular tell user to become a regular first
                     user.is_logged_in = False

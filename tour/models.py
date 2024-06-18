@@ -75,6 +75,8 @@ class Regular_User (AbstractBaseUser):
     is_logged_in = models.BooleanField(default=False)
     last_login = models.DateTimeField(('last login'), blank=True, null=True)
     
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['email']
     
     def __str__(self):
         return f"{self.username}-{self.email}-{self.password}-{self.con_password}-{self.is_logged_in}-{self.last_login}"
